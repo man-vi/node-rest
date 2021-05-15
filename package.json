@@ -1,0 +1,22 @@
+{
+  "name": "rest",
+  "version": "1.0.0",
+  "description": "Users API for crud operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/man-vi/node-rest.git"
+  },
+  "author": "Manikanta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/man-vi/node-rest/issues"
+  },
+  "homepage": "https://github.com/man-vi/node-rest#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
