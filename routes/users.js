@@ -24,4 +24,9 @@ router.get('/:id', async (req, res) => {
     return res.send(user)
 })
 
+router.delete('/:id', async (req, res) => {
+    let user = await User.find({id:req.params.id})
+    user = await User.findOneAndDelete(user)
+    return res.send(user)
+})
 module.exports = router 
