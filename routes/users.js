@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const id = crypto.randomBytes(16).toString("hex");
     let user = new User({
-        id:id,
+        id: id,
         name: req.body.name,
         dob: req.body.dob,
         descriptoin: req.body.descriptoin,
@@ -18,15 +18,24 @@ router.post('/', async (req, res) => {
 
 })
 
-
 router.get('/:id', async (req, res) => {
-    const user = await User.find({id:req.params.id})
+    const user = await User.find({ id: req.params.id })
     return res.send(user)
 })
 
 router.delete('/:id', async (req, res) => {
-    let user = await User.find({id:req.params.id})
-    user = await User.findOneAndDelete(user)
+    user = await User.findOneAndDelete({ id: req.params.id })
     return res.send(user)
 })
+
+router.put('/:id', async (req, res) => {
+    const user = await User.findOneAndUpdate({ id: req.params.id }, {
+        name: req.body.name,
+        dob: req.body.dob,
+        descriptoin: req.body.descriptoin,
+        address: req.body.address
+    })
+    return res.send(user)
+})
+
 module.exports = router 
