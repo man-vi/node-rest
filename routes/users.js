@@ -14,14 +14,14 @@ router.post('/', async (req, res) => {
         user = await user.save()
         return res.send(user)
     } catch (e) {
-        return res.status(500).send({ error: 'Internal Server', errorCode: 100 })
+        return res.status(500).send({ error: 'Internal Server', errorCode: 100, error: e })
     }
 
 })
 
 router.get('/:id', async (req, res) => {
     try {
-        const user = await User.find({ id: req.params.id })
+        const user = await User.findById(req.params.id)
         if (!user || user.length == 0) return res.status(404).send({ error: 'User id not found', errorCode: 10 })
         return res.send(user)
     } catch (e) {
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        user = await User.findOneAndDelete({ id: req.params.id })
+        user = await User.findByIdAndRemove(req.params.id)
         if (!user) return res.status(404).send({ error: 'User id not found', errorCode: 10 })
         return res.send(user)
     } catch (e) {
@@ -41,7 +41,7 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const user = await User.findOneAndUpdate({ id: req.params.id }, {
+        const user = await User.findByIdAndUpdate(req.params.id, {
             name: req.body.name,
             dob: req.body.dob,
             descriptoin: req.body.descriptoin,
