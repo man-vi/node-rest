@@ -96,7 +96,7 @@
               }
             },
             "400": {
-              "description": "Invalid status value",
+              "description": "User Id not found",
               "schema": {
                 "$ref": "#/definitions/InvalidResponse"
               }
@@ -129,7 +129,7 @@
               }
             },
             "400": {
-              "description": "Invalid status value",
+              "description": "UserId not found",
               "schema": {
                 "$ref": "#/definitions/InvalidResponse"
               }
@@ -162,7 +162,7 @@
               }
             },
             "400": {
-              "description": "Invalid status value",
+              "description": "Invalid user Id",
               "schema": {
                 "$ref": "#/definitions/InvalidResponse"
               }
