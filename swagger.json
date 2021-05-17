@@ -1,0 +1,224 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "A Users API to handle user related operations",
+      "version": "1.0.0",
+      "title": "Users API",
+      "contact": {
+        "email": "manikanta.dev@pm.me"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "schemes": [
+      "http"
+    ],
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "paths": {
+      "/users": {
+        "post": {
+          "summary": "Save the User",
+          "description": "Save the user",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "user object",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/usersResponse"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
+            }
+          }
+        }
+      },
+      "/users/{id}": {
+        "put": {
+          "summary": "Update the user",
+          "description": "Update the user",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "user id that needs to be updated",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "user object",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successfully updated",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/usersResponse"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete the user",
+          "description": "Delete the user",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "user id that needs to be deleted",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/usersResponse"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
+            }
+          }
+        },
+        "get": {
+          "summary": "get the user",
+          "description": "get the user",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "user id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/usersResponse"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {
+                "$ref": "#/definitions/InvalidResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "usersResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "dob": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "dob": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "InvalidResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
