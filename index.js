@@ -1,5 +1,5 @@
 const app = require("./server");
-
-app.listen(5000, () => {
+const config = require('config')
+app.listen(config.get('port'), () => {
   console.log("Server has started!");
 });

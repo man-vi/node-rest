@@ -1,9 +1,10 @@
 const express = require('express')
 const routes = require('./routes/users')
 const mongoose = require('mongoose');
+const config = require('config')
 const app = express()
 
-mongoose.connect('mongodb://localhost:27017/nodeRestTestDb')
+mongoose.connect(config.get('db_url'))
     .then(() => console.log('Connected to db!'))
     .catch(e => console.log(e))
 
